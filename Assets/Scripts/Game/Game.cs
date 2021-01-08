@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Game : MonoBehaviour
 {
-    public GamePauseChanged GamePauseChanged = new GamePauseChanged();
+    public UnityAction<bool> GamePauseChanged;
     public UnityEvent Restarted = new UnityEvent();
     public UnityEvent GameOver = new UnityEvent();
 

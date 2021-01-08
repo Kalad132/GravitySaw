@@ -17,12 +17,12 @@ public class Score : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.ScoreChanged.AddListener(OnScoreChanged);
+        _player.ScoreChanged += OnScoreChanged;
     }
 
     private void OnDisable()
     {
-        _player.ScoreChanged.RemoveListener(OnScoreChanged);
+        _player.ScoreChanged -= OnScoreChanged;
     }
 
     private void OnScoreChanged(int score)

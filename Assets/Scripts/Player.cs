@@ -6,8 +6,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    public HealthChanged HealthChanged = new HealthChanged();
-    public ScoreChanged ScoreChanged = new ScoreChanged();
+    public UnityAction<int, int> HealthChanged;
+    public UnityAction<int> ScoreChanged;
     public UnityEvent Death = new UnityEvent();
 
     [SerializeField] private Game _game;

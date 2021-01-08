@@ -17,14 +17,14 @@ public class UI : MonoBehaviour
 
     private void OnEnable()
     {
-        _game.GamePauseChanged.AddListener(OnGamePauseChanged);
+        _game.GamePauseChanged += OnGamePauseChanged;
         _game.GameOver.AddListener(OnGameOver);
         _game.Restarted.AddListener(OnRestart);
     }
 
     private void OnDisable()
     {
-        _game.GamePauseChanged.RemoveListener(OnGamePauseChanged);
+        _game.GamePauseChanged -= OnGamePauseChanged;
         _game.GameOver.RemoveListener(OnGameOver);
         _game.Restarted.RemoveListener(OnRestart);
     }

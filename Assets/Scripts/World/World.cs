@@ -14,6 +14,7 @@ public class World : MonoBehaviour
     private List<WorldBlock> _unusedBlocks;
     private Vector3 _newBlockOffset = new Vector3(121.6f, 0, 0);
     private float _newBlockDistance = 150;
+    private bool _isNewBlockNeeded { get => _player.position.x + _newBlockDistance > _blocks[_blocks.Count - 1].Position.x; }
 
     private void OnEnable()
     {
@@ -40,7 +41,7 @@ public class World : MonoBehaviour
 
     private void Update()
     {
-        if (IsNewBlockNeeded())
+        if (_isNewBlockNeeded)
         {
             if (_unusedBlocks.Count == 0 || _blocks.Count == _maxActiveBlocksAmount)
                 DeactivateOldestBlock();
@@ -73,11 +74,6 @@ public class World : MonoBehaviour
         block.Position = GetNewBlockPosition();
         _blocks.Add(block);
         _unusedBlocks.RemoveAt(index);
-    }
-
-    private bool IsNewBlockNeeded()
-    {
-        return _player.position.x + _newBlockDistance > _blocks[_blocks.Count - 1].Position.x;
     }
 
     private Vector3 GetNewBlockPosition()
